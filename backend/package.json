@@ -1,0 +1,26 @@
+{
+    "name": "backend",
+    "type": "module",
+    "scripts": {
+        "dev": "node server.js"
+    },
+    "dependencies": {
+        "axios": "^1.10.0",
+        "axios-retry": "^4.5.0",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.5",
+        "date-fns": "^4.1.0",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "fs": "^0.0.1-security",
+        "multer": "^2.0.1",
+        "node-cron": "^4.0.7",
+        "nodemailer": "^7.0.3",
+        "openai": "^5.8.1",
+        "passport": "^0.7.0",
+        "passport-google-oauth20": "^2.0.0",
+        "pdf-extraction": "^1.0.2",
+        "pdfjs-dist": "^5.3.93",
+        "pg": "^8.16.0"
+    }
+}
