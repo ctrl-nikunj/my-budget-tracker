@@ -84,3 +84,7 @@ ADD COLUMN IF NOT EXISTS tax_amount numeric(12, 2) DEFAULT 0.00,
 ADD COLUMN IF NOT EXISTS meta jsonb DEFAULT '{}'::jsonb,
 ADD COLUMN IF NOT EXISTS created_at timestamp DEFAULT now(),
 ADD COLUMN IF NOT EXISTS updated_at timestamp DEFAULT now();
+
+
+alter table contacts
+ADD COLUMN IF NOT EXISTS updated_at timestamp DEFAULT now();

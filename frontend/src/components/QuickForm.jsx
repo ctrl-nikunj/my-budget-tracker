@@ -253,3 +253,89 @@ export function FDForm({ fd, setFd, filteredBank }) {
     </div>
   );
 }
+export function ContactForm({ contact, setContact, defaultData = {} }) {
+  return (
+    <div className="grid grid-cols-1 gap-4 font-inter">
+      <div className="flex flex-col gap-2">
+        <Label>Name</Label>
+        <Input
+          value={contact.name || defaultData.name || ""}
+          onChange={(e) => setContact({ ...contact, name: e.target.value })}
+          placeholder="Contact name"
+          required
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label>Email</Label>
+        <Input
+          value={contact.email || defaultData.email || ""}
+          onChange={(e) => setContact({ ...contact, email: e.target.value })}
+          placeholder="Email address"
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label>Phone</Label>
+        <div className="flex gap-2">
+          <Select
+            value={contact.stdCode || defaultData.stdCode || "+91"}
+            onValueChange={(val) => setContact({ ...contact, stdCode: val })}
+            required
+          >
+            <SelectTrigger className="max-w-[80px]">
+              <SelectValue placeholder="STD" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="+91">🇮🇳 +91</SelectItem>
+              <SelectItem value="+84">🇻🇳 +84</SelectItem>
+              <SelectItem value="+1">🇺🇸 +1</SelectItem>
+            </SelectContent>
+          </Select>
+          <Input
+            className="flex-1"
+            value={contact.phone || defaultData.phone || ""}
+            onChange={(e) => setContact({ ...contact, phone: e.target.value })}
+            placeholder="Phone number"
+            required
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label>Type</Label>
+        <Select
+          value={contact.type || defaultData.type || ""}
+          onValueChange={(val) => setContact({ ...contact, type: val })}
+          required
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="customer">Customer</SelectItem>
+            <SelectItem value="vendor">Vendor</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label>GSTIN</Label>
+        <Input
+          value={contact.gstin || defaultData.gstin || ""}
+          onChange={(e) => setContact({ ...contact, gstin: e.target.value })}
+          placeholder="GSTIN (optional)"
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Label>Address</Label>
+        <Input
+          value={contact.address || defaultData.address || ""}
+          onChange={(e) => setContact({ ...contact, address: e.target.value })}
+          placeholder="Business address"
+        />
+      </div>
+    </div>
+  );
+}

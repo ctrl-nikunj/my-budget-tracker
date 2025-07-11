@@ -5,6 +5,8 @@ import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import Forgot from "./pages/ForgotPassword";
 import Reset from "./pages/ResetPassword";
+import Sales from "./pages/Sales";
+import Purchase from "./pages/Purchase";
 import { LoaderIcon } from "lucide-react";
 
 // Lazy imports for dashboard features
@@ -78,6 +80,34 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<div className="p-4">Loading Profile...</div>}>
         <Profile />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/invoice/sales",
+    element: (
+      <Suspense
+        fallback={
+          <div className="grid h-screen place-items-center ">
+            <LoaderIcon className="h-8 w-8 animate-spin" />
+          </div>
+        }
+      >
+        <Sales />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/invoice/purchase",
+    element: (
+      <Suspense
+        fallback={
+          <div className="grid h-screen place-items-center ">
+            <LoaderIcon className="h-8 w-8 animate-spin" />
+          </div>
+        }
+      >
+        <Purchase />
       </Suspense>
     ),
   },

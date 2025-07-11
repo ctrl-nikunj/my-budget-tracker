@@ -15,7 +15,7 @@ console.log(
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import contactsRoutes from "./server/routes/contactsRoutes.js";
 import authRoutes from "./server/routes/authRoutes.js";
 import transactionRoutes from "./server/routes/transactions.js";
 import reminderRoutes from "./server/routes/reminders.js";
@@ -53,7 +53,7 @@ startCronJobs();
 app.use("/api/auth", authRoutes);
 app.use("/api/bank", bankRoutes);
 app.use("/api/statement", statementRoutes);
-
+app.use("/api/contact", contactsRoutes);
 app.get("/", (req, res) => {
   res.send("Budget Tracker API is running!!!");
 });

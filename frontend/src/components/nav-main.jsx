@@ -1,4 +1,4 @@
-import { LoaderIcon, PlusCircleIcon } from "lucide-react";
+import { LoaderIcon, Minus, Plus, PlusCircleIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,6 +7,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
 import { TransactionForm, ReminderForm, FDForm } from "./QuickForm";
@@ -24,8 +27,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import api from "@/lib/api";
 import { useRefreshStore } from "@/lib/refreshStore";
 import { Suspense } from "react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 
-export function NavMain({ items }) {
+export function NavMain({ items, collapse }) {
   const { triggerTxnRefresh, triggerRemindersRefresh, triggerFdsRefresh } =
     useRefreshStore();
   const [loading, setLoading] = useState(false);
@@ -356,6 +360,43 @@ export function NavMain({ items }) {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+          ))}
+          {collapse.map((item, index) => (
+            <Collapsible
+              key={item.title}
+              defaultOpen={index === 1}
+              className="group/collapsible"
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton>
+                    {item.icon && <item.icon className="h-4 w-4" />}
+                    <span>{item.title}</span>
+                    <Plus className="ml-auto group-data-[state=open]/collapsible:hidden" />
+                    <Minus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                {item.items?.length ? (
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {item.items.map((item) => (
+                        <SidebarMenuSubItem key={item.title}>
+                          <SidebarMenuSubButton
+                            asChild
+                            isActive={item.isActive}
+                          >
+                            <Link to={item.url}>
+                              {item.icon && <item.icon className="h-4 w-4" />}
+                              <span>{item.title}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                ) : null}
+              </SidebarMenuItem>
+            </Collapsible>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>

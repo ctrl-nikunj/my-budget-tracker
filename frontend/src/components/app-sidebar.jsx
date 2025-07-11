@@ -2,14 +2,15 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   BarChartIcon,
-  DollarSign,
   HelpCircleIcon,
   LayoutDashboardIcon,
   HandCoinsIcon,
   SearchIcon,
   SettingsIcon,
+  FileInput,
+  FileOutput,
 } from "lucide-react";
-import { FaMoneyBill, FaTasks } from "react-icons/fa";
+import { FaMoneyBill, FaTasks, FaFileInvoice } from "react-icons/fa";
 import { NavMain } from "@/components/nav-main";
 import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
@@ -28,11 +29,46 @@ import api from "@/lib/api";
 // 👇 Memoized static nav structure outside the component
 const navData = {
   navMain: [
-    { title: "Dashboard", url: "/dashboard", icon: LayoutDashboardIcon },
-    { title: "FDs", url: "/fds", icon: HandCoinsIcon },
-    { title: "Analytics", url: "/analytics", icon: BarChartIcon },
-    { title: "Transactions", url: "/transactions", icon: FaMoneyBill },
-    { title: "Reminders", url: "/reminders", icon: FaTasks },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboardIcon,
+    },
+    {
+      title: "FDs",
+      url: "/fds",
+      icon: HandCoinsIcon,
+    },
+    {
+      title: "Analytics",
+      url: "/analytics",
+      icon: BarChartIcon,
+    },
+    {
+      title: "Transactions",
+      url: "/transactions",
+      icon: FaMoneyBill,
+    },
+    {
+      title: "Reminders",
+      url: "/reminders",
+      icon: FaTasks,
+    },
+  ],
+  collapse: [
+    {
+      title: "Invoice",
+      url: "#",
+      items: [
+        { title: "Sales", url: "/invoice/sales", icon: FileInput },
+        {
+          title: "Purchase",
+          url: "/invoice/purchase",
+          icon: FileOutput,
+        },
+      ],
+      icon: FaFileInvoice,
+    },
   ],
   navSecondary: [
     { title: "Settings", url: "#", icon: SettingsIcon },
@@ -77,17 +113,21 @@ const AppSidebar = React.memo(function AppSidebar(props) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <span>
-                <DollarSign className="h-5 w-5" />
-                <span className="text-base font-semibold">Paylert</span>
-              </span>
+              <div className="flex items-center ">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center">
+                  <img src="./Logo.png"></img>
+                </div>
+                <span className="text-2xl font-semibold text-zinc-700">
+                  Paylert
+                </span>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
 
       <SidebarContent>
-        <NavMain items={navData.navMain} />
+        <NavMain items={navData.navMain} collapse={navData.collapse}  />
         <NavSecondary items={navData.navSecondary} />
       </SidebarContent>
 

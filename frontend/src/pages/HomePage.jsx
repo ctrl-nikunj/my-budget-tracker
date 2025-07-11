@@ -40,9 +40,9 @@ export default function HomePage() {
         >
           <div className="flex w-full items-center justify-between">
             {/* Logo + Name */}
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                <DollarSign className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-1">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center">
+                <img src="./Logo.png"></img>
               </div>
               <span className="text-2xl font-semibold text-zinc-700">
                 Paylert
@@ -208,8 +208,10 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="border-t border-zinc-300 bg-white w-full">
           <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-zinc-500 text-sm">
-            <div className="flex items-center gap-2 mb-4 sm:mb-0">
-              <DollarSign className="w-4 h-4 text-zinc-600" />
+            <div className="flex items-center gap-1 mb-4 sm:mb-0">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                <img src="./Logo.png"></img>
+              </div>
               <span>Paylert Books © 2025</span>
             </div>
             <div>Made for Indian businesses & startups</div>

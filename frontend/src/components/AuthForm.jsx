@@ -136,11 +136,11 @@ export default function AuthForm({ mode }) {
         <CardHeader className="px-6 pt-6 bg-zinc-100">
           <header>
             <div className="max-w-6xl pb-2">
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                  <DollarSign className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-1">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <img src="./Logo.png"></img>
                 </div>
-                <span className="text-xl font-semibold text-zinc-700">
+                <span className="text-2xl font-semibold text-zinc-700">
                   Paylert
                 </span>
               </div>

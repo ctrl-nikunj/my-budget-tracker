@@ -126,7 +126,7 @@ export default function Transactions() {
     };
     fetchTxn();
     setIsVisible(true);
-  }, [refreshTxn]);
+  }, [triggerTxnRefresh]);
   console.log(transactions);
   return (
     <DashboardLayout name="Transactions">
